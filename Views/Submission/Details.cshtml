@@ -1,0 +1,56 @@
+﻿@model MarkelApp.ViewModels.SubmissionDetailsViewModel
+@{
+    ViewBag.Title = "Submission Details";
+}
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Submission Details</h2>
+            @foreach (var submission in Model.Submissions)
+            {
+                <h3>@submission.SubmissionName</h3>
+                <h4>Submission ID: @submission.SubmissionId</h4>
+                <p>@submission.SubmissionDetails</p>
+            }
+        </div>
+        <div class="col-6 text-right">
+            <a class="btn btn-secondary" asp-area="" asp-controller="Submission" asp-action="Index">Return</a>
+        </div>
+    </div>
+    <br />
+
+    @if (Model.Analyses.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Analysis ID
+                    </th>
+                    <th>
+                        Aggregate Limit One
+                    </th>
+                    <th>
+                        Aggregate Limit Two
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var analysis in Model.Analyses)
+                {
+                    <tr>
+                        <td width="30%">@analysis.AnalysisId</td>
+                        <td width="30%">@analysis.AggLimit_1</td>
+                        <td width="30%">@analysis.AggLimit_2</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    else
+    {
+        <h3>No Analysis Exist in Database</h3>
+    }
+</div>
+
