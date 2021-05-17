@@ -14,9 +14,9 @@ namespace MarkelApp.Models
         public int SubmissionId { get; set; }
         public Submission Submission { get; set; }
 
-        public int AggLimit_1 { get; set; }
+        public long AggLimit_1 { get; set; }
 
-        public int AggLimit_2 { get; set; }
+        public long AggLimit_2 { get; set; }
 
         [Timestamp]
         public byte[] TimeStamp { get; set; }
